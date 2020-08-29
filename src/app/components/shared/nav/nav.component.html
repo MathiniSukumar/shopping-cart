@@ -2,5 +2,9 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">
         <app-header></app-header>
     </h5>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" [routerLink]="['/shoppingCart']">Shop</a>
+    </nav>
+    <a class="btn btn-sm btn-primary product-btn" [routerLink]="['/register']">Sign up</a>
+    <a class="btn btn-sm btn-secondary product-btn" [routerLink]="['/login']">Login</a>
   </div>

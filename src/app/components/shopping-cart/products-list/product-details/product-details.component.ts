@@ -1,28 +1,37 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MessageService } from 'src/app/services/message.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Product } from 'src/app/model/product';
+import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  styleUrls: ['./product-details.component.scss'],
+  providers: [ProductsService]
 })
 export class ProductDetailsComponent implements OnInit {
 
-  productDetails: Product
+  id: number;
+  products: Product[];
+  private sub: any;
 
-  constructor(private messageService: MessageService) { }
+  prodIdSnapshot: number;
 
-  ngOnInit(): void {
-    this.loadProductDetails();
+  constructor(private productService: ProductsService, private route: ActivatedRoute) {
+     productService.getProducts().subscribe((products) => {
+          this.products = products;
+      });
   }
 
-  loadProductDetails() {
-    alert("Mathini");
-    this.messageService.getMessage().subscribe((product: Product) => {  
-      console.log(product);     
-      this.productDetails = product;
-    });
+  ngOnInit() {
+      
+      this.sub = this.route.params.subscribe(params => {
+          this.id = +params['id'];
+      });
+  }
+
+  ngOnDestroy() {
+      this.sub.unsubscribe();
   }
 
 }

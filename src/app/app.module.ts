@@ -14,7 +14,12 @@ import { CartItemComponent } from './components/shopping-cart/cart/cart-item/car
 import { ProductItemComponent } from './components/shopping-cart/products-list/product-item/product-item.component';
 import { CheckoutComponent } from './components/shopping-cart/cart/checkout/checkout.component';
 import { PaymentComponent } from './components/shopping-cart/cart/payment/payment.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { SelectedProductsPipe } from './pipes/selected-products.pipe';
 import { ProductDetailsComponent } from './components/shopping-cart/products-list/product-details/product-details.component';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +35,10 @@ import { ProductDetailsComponent } from './components/shopping-cart/products-lis
     ProductItemComponent,
     CheckoutComponent,
     PaymentComponent,
+    LoginComponent,
+    RegisterComponent,
+    PageNotFoundComponent,    
+    SelectedProductsPipe,
     ProductDetailsComponent
   ],
   imports: [
